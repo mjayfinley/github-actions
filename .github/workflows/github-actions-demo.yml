@@ -4,17 +4,21 @@ on:
     branches:
       - master
 jobs:
-  update-qa:
-    name: Deploy QA - Branch development pushed
+  sync-branches:
     runs-on: ubuntu-latest
+    name: Syncing branches
     steps:
-    - name: Checkout
-      uses: actions/checkout@v2
-
-    - name: Push
-      uses: Embraser01/update-git-branch-action@v1.0.0
-      if: github.ref == 'refs/heads/master'
-      with: 
-        branch: qa
-        force: 1
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Set up Node
+        uses: actions/setup-node@v1
+        with:
+          node-version: 12
+      - name: Opening pull request
+        id: pull
+        uses: tretuna/sync-branches@1.2.0
+        with:
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+          FROM_BRANCH: "master"
+          TO_BRANCH: "qa"
       
