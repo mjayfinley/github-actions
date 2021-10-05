@@ -13,5 +13,6 @@ jobs:
 
     - name: Push
       run: |
+        git commit -m "Build QA from Dev"
         git push origin qa
       
