@@ -15,6 +15,7 @@ jobs:
       run: |
         git config --global user.name "Micah Finley"
         git config --global user.email "micah.finley@tbsokc.com"
+        git add -A
         git commit -m "Build QA from Dev"
         git push origin qa
       
