@@ -12,10 +12,9 @@ jobs:
       uses: actions/checkout@v2
 
     - name: Push
-      run: |
-        git config --global user.name "Micah Finley"
-        git config --global user.email "micah.finley@tbsokc.com"
-        git checkout origin qa
-        git commit -m "Build QA from Dev"
-        git push origin qa
+      uses: Embraser01/update-git-branch-action@v1.0.0
+      if: github.ref == 'refs/heads/master'
+      with: 
+        branch: qa
+        force: 1
       
