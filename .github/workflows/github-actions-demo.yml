@@ -21,4 +21,8 @@ jobs:
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
           FROM_BRANCH: "master"
           TO_BRANCH: "qa"
+
+      - name: Push PR
+        run: |
+          git merge
       
